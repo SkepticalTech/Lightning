@@ -33,15 +33,20 @@ public class LightningKeyHandler extends KeyHandler {
 
     @Override
     public void keyDown(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd, boolean isRepeat) {
+        try{
         if(mcinstance.currentScreen == null && tickEnd){
             if(kb == keyBinds[0]){ //Global chat
                 GuiChat gc = new GuiChat("/g ");
                 mcinstance.displayGuiScreen(gc);
             }
             else if(kb == keyBinds[1]){ //Join match
-                mcinstance.thePlayer.sendChatMessage("join");
+                mcinstance.thePlayer.sendChatMessage("/join");
             }
             
+        }
+        }
+        catch (NoSuchFieldError e){
+            //do nothing
         }
     }
 
